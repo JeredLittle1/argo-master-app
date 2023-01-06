@@ -55,6 +55,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: istio-ingress
   syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        istio-injection: enabled
     syncOptions:
     - CreateNamespace=true
     automated:
