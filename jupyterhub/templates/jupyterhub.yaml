@@ -10,6 +10,12 @@ spec:
     repoURL: https://jupyterhub.github.io/helm-chart/
     targetRevision: {{ .Values.jupyterhub.targetRevision }}
     chart: jupyterhub
+    helm:
+      values: |
+        ingress:
+          enabled: true
+          hosts:
+            - jupyterhub.{{ .Values.jupyterhub.domainName }}
   destination: 
     server: https://kubernetes.default.svc
     namespace: jupyterhub
