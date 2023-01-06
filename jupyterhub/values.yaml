@@ -1,4 +1,4 @@
-argoWorkflows:
+jupyterhub:
   create: true
   targetRevision: 2.0.0
   enableGoogleAuth: false
