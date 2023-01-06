@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL:  https://istio-release.storage.googleapis.com/charts
+    repoURL:  https://kubernetes.github.io/ingress-nginx
     targetRevision: {{ .Values.nginx.targetRevision }}
-    chart: base
+    chart: ingress-nginx
   destination: 
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
