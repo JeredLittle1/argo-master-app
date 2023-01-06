@@ -32,7 +32,7 @@ spec:
     chart: istiod
   destination: 
     server: https://kubernetes.default.svc
-    namespace: istio-ingress
+    namespace: istio-system
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
