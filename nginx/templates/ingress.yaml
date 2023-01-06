@@ -71,7 +71,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: jupyterhub
+            name: hub
             port:
-              name: 8080
+              name: hub
   ingressClassName: nginx
