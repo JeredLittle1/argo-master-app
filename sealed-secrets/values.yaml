@@ -1,3 +1,6 @@
 secrets:
   clientId: ""
   clientSecret: ""
+sealedSecrets:
+  targetRevision: 2.7.2
+  create: true
