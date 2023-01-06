@@ -18,7 +18,7 @@ spec:
             - jupyterhub.{{ .Values.jupyterhub.domainName }}
         proxy:
           service:
-            type: ClusterIp
+            type: ClusterIP
   destination: 
     server: https://kubernetes.default.svc
     namespace: jupyterhub
