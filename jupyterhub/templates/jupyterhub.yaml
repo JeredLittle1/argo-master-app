@@ -16,6 +16,7 @@ spec:
           enabled: true
           hosts:
             - jupyterhub.{{ .Values.jupyterhub.domainName }}
+          ingressClassName: nginx
         proxy:
           service:
             type: ClusterIP
