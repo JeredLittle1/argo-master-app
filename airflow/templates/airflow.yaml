@@ -1,0 +1,46 @@
+{{ if .Values.airflow.create }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: airflow
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://airflow.apache.org/
+    targetRevision: {{ .Values.airflow.targetRevision }}
+    chart: airflow
+    helm:
+      version: v3
+      valueFiles:
+      - values.yaml
+      # https://github.com/apache/airflow/pull/16331#issuecomment-857004828
+      values: |
+        executor: KubernetesExecutor
+        postgresql:
+          enabled: true
+          persistence:
+            enabled: false
+        flower:
+          enabled: false
+        redis:
+          enabled: false
+        statsd:
+          enabled: false
+        pgbouncer:
+          enabled: false
+        migrateDatabaseJob:
+          jobAnnotations:
+            "argocd.argoproj.io/hook": Sync
+            "argocd.argoproj.io/sync-wave": "0"
+            "argocd.argoproj.io/hook-delete-policy": BeforeHookCreation,HookSucceeded
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: airflow
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+{{ end }}

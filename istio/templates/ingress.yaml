@@ -1,0 +1,80 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-argocd
+  namespace: argocd
+  annotations:
+    kubernetes.io/ingress.class: istio
+spec:
+  rules:
+  - host: argocd.{{ .Values.ingress.domainName }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-argo-workflows
+  namespace: argo-workflows
+  annotations:
+    kubernetes.io/ingress.class: istio
+spec:
+  rules:
+  - host: argo-workflows.{{ .Values.ingress.domainName }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argo-workflows-server
+            port:
+              number: 2746
+  ingressClassName: nginx
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-airflow
+  namespace: airflow
+  annotations:
+    kubernetes.io/ingress.class: istio
+spec:
+  rules:
+  - host: airflow.{{ .Values.ingress.domainName }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: airflow-webserver
+            port:
+              name: airflow-ui
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-jupyterhub
+  namespace: jupyterhub
+  annotations:
+    kubernetes.io/ingress.class: istio
+spec:
+  rules:
+  - host: jupyterhub.{{ .Values.ingress.domainName }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jupyterhub
+            port:
+              name: 8080

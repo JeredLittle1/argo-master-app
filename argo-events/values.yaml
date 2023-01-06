@@ -1,0 +1,3 @@
+argoEvents:
+  create: true
+  targetRevision: 2.0.10
