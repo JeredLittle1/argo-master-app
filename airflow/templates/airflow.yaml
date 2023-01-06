@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: airflow
-  namespace: airflow
+  namespace: airflow-master
 spec:
   project: default
   source:
