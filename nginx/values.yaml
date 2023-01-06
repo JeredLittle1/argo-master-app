@@ -1,0 +1,5 @@
+ingress:
+  domainName: "test.org"
+  enableGoogleAuth: false
+nginx:
+  targetRevision: 4.4.2

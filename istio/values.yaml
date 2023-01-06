@@ -1,9 +1,0 @@
-ingress:
-  domainName: "test.org"
-  enableGoogleAuth: false
-istiod:
-  targetRevision: 1.16.1
-istioBase:
-  targetRevision: 1.16.1
-istioGateway:
-  targetRevision: 1.16.1
