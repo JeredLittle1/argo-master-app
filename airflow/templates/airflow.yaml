@@ -35,7 +35,7 @@ spec:
           extraVolumes:
             - name: dags
               hostPath:
-                path: /mnt/airflow/dags
+                path: {{ .Values.airflow.mountConfig.local.dagMountPath }}
                 type: Directory
           extraVolumeMounts:
             - name: dags
@@ -44,7 +44,7 @@ spec:
           extraVolumes:
             - name: dags
               hostPath:
-                path: /mnt/airflow/dags
+                path: {{ .Values.airflow.mountConfig.local.dagMountPath }}
                 type: Directory
           extraVolumeMounts:
             - name: dags
