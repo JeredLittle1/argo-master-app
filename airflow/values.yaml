@@ -4,6 +4,6 @@ airflow:
   local: true
   mountConfig:
     local:
-      dagMountPath: "/home/jered/workplace/team-engineering/airflow/dags/" # TODO Change
+      dagMountPath: "/home/jered/workplace/team-engineering/airflow/dags" # TODO Change
     github:
       repoUrl: ""
