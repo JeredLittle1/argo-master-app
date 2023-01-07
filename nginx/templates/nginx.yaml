@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL:  https://charts.bitnami.com/bitnami
+    repoURL:  https://kubernetes.github.io/ingress-nginx
     targetRevision: {{ .Values.nginx.targetRevision }}
-    chart: nginx
+    chart: ingress-nginx
   destination: 
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
