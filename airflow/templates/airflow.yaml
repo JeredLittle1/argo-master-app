@@ -18,8 +18,8 @@ spec:
       values: |
         config: 
           core:
-            min_serialized_dag_update_interval = 600
-            min_serialized_dag_fetch_interval = 300
+            min_serialized_dag_update_interval: 600
+            min_serialized_dag_fetch_interval: 300
           scheduler:
             min_file_process_interval: 600
             processor_poll_interval: 5
