@@ -14,5 +14,5 @@ spec:
           service:
             name: prometheus-server
             port:
-              number: prometheus
+              number: prometheus-server
   ingressClassName: nginx
