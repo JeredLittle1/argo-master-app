@@ -31,6 +31,8 @@ spec:
         pgbouncer:
           enabled: false
         scheduler:
+          logGroomerSidecar:
+            enabled: false
           extraVolumes:
             - name: dags
               hostPath:
