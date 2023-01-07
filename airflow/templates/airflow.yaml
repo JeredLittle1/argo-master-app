@@ -16,6 +16,14 @@ spec:
       - values.yaml
       # https://github.com/apache/airflow/pull/16331#issuecomment-857004828
       values: |
+        config: 
+          core:
+            min_serialized_dag_update_interval = 600
+            min_serialized_dag_fetch_interval = 300
+          scheduler:
+            min_file_process_interval: 600
+            processor_poll_interval: 5
+            parsing_processes: 2
         executor: KubernetesExecutor
         {{ if .Values.airflow.local }}
         executor: LocalExecutor
