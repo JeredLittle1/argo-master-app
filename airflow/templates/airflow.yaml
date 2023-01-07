@@ -30,7 +30,6 @@ spec:
           enabled: false
         pgbouncer:
           enabled: false
-        {{ end }}
         {{ else }}
         executor: KubernetesExecutor
         {{ end }}
