@@ -17,7 +17,7 @@ spec:
       # https://github.com/apache/airflow/pull/16331#issuecomment-857004828
       values: |
         {{ if .Values.airflow.local }}
-        executor: SequentialExecutor
+        executor: LocalExecutor
         postgresql:
           enabled: true
           persistence:
