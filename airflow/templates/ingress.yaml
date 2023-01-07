@@ -1,20 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-argocd
-  namespace: argocd
-  annotations:
-    ingress.kubernetes.io/rewrite-target: /
+  name: ingress-airflow
+  namespace: airflow
 spec:
   rules:
-  - host: argocd.{{ .Values.ingress.domainName }}
+  - host: airflow.{{ .Values.airflow.domainName }}
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: argocd-server
+            name: airflow-webserver
             port:
-              number: 80
+              name: airflow-ui
   ingressClassName: nginx
