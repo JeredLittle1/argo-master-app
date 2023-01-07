@@ -16,8 +16,8 @@ spec:
       - values.yaml
       # https://github.com/apache/airflow/pull/16331#issuecomment-857004828
       values: |
+        executor: KubernetesExecutor
         {{ if .Values.airflow.local }}
-        executor: LocalExecutor
         postgresql:
           enabled: true
           persistence:
@@ -48,8 +48,6 @@ spec:
           extraVolumeMounts:
             - name: dags
               mountPath: /opt/airflow/dags
-        {{ else }}
-        executor: KubernetesExecutor
         {{ end }}
         migrateDatabaseJob:
           jobAnnotations:
