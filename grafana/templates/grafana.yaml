@@ -21,6 +21,19 @@ spec:
               url: http://prometheus-server.prometheus.svc.cluster.local
               access: proxy
               isDefault: true
+        dashboards:
+          nginx-ingress:
+            gnetId: 9614
+            revision: 2
+            datasource: Prometheus
+          storage:
+            gnetId: 11455
+            revision: 6
+            datasource: Prometheus
+          cpu-memory:
+            gnetId: 15661
+            revision: 1
+            datasource: Prometheus
         {{ if .Values.grafana.adminUser.keySet }}
         admin:
           ## Name of the secret. Can be templated.
