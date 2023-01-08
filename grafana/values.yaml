@@ -2,4 +2,8 @@ grafana:
   create: true
   targetRevision: 6.49.0
   domainName: test.org
-  local: false
+  adminUser:
+    keySet: true
+    secretId: admin-user
+    usernameKey: username
+    passwordKey: password
