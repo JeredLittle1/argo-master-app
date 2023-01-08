@@ -1,4 +1,0 @@
-prometheus:
-  create: true
-  targetRevision: 19.3.0
-  domainName: test.org
