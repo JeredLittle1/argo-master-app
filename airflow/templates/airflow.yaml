@@ -30,24 +30,6 @@ spec:
           enabled: false
         pgbouncer:
           enabled: false
-        scheduler:
-          extraVolumes:
-            - name: dags
-              hostPath:
-                path: {{ .Values.airflow.mountConfig.local.dagMountPath }}
-                type: Directory
-          extraVolumeMounts:
-            - name: dags
-              mountPath: /opt/airflow/dags
-        webserver:
-          extraVolumes:
-            - name: dags
-              hostPath:
-                path: {{ .Values.airflow.mountConfig.local.dagMountPath }}
-                type: Directory
-          extraVolumeMounts:
-            - name: dags
-              mountPath: /opt/airflow/dags
         {{ else }}
         executor: KubernetesExecutor
         {{ end }}
