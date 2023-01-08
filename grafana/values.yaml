@@ -1,6 +1,6 @@
 grafana:
   create: true
-  targetRevision: 6.49.0
+  targetRevision: 43.2.1
   domainName: test.org
   adminUser:
     keySet: true
