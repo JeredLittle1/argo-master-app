@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: grafana
+  name: kube-prometheus-stack
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: {{ .Values.grafana.targetRevision }}
+    targetRevision: {{ .Values.targetRevision }}
     chart: kube-prometheus-stack
     helm:
       values: |
@@ -57,7 +57,7 @@ spec:
           {{ end }}
   destination: 
     server: https://kubernetes.default.svc
-    namespace: grafana
+    namespace: kube-prometheus-stack
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
