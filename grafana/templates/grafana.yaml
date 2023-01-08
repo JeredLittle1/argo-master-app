@@ -35,17 +35,9 @@ spec:
                 path: /var/lib/grafana/dashboards/default
         dashboards:
           default:
-            nginx-ingress:
-              gnetId: 9614
-              revision: 2
-              datasource: Prometheus
-            storage:
-              gnetId: 11455
-              revision: 6
-              datasource: Prometheus
-            cpu-memory:
-              gnetId: 15661
-              revision: 1
+            nodes:
+              gnetId: 1860
+              revision: 29
               datasource: Prometheus
         {{ if .Values.grafana.adminUser.keySet }}
         admin:
