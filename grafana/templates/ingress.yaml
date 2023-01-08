@@ -14,5 +14,5 @@ spec:
           service:
             name: grafana
             port:
-              name: service
+              name: http-web
   ingressClassName: nginx
