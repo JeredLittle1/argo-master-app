@@ -1,4 +1,4 @@
-targetRevision: 43.2.1
+targetRevision: 40.0.0
 grafana:
   create: true
   domainName: test.org
