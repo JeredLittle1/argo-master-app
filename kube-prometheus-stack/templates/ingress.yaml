@@ -12,7 +12,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: grafana
+            name: kube-prometheus-stack-grafana
             port:
               name: http-web
   ingressClassName: nginx
