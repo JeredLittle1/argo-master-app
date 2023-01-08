@@ -15,9 +15,6 @@ spec:
     helm:
       skipCrds: true
       values: |
-        prometheus-node-exporter:
-           hostRootFsMount:
-             enabled: false
         prometheusOperator:
            admissionWebhooks:
              failurePolicy: Ignore
