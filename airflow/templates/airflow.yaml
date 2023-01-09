@@ -17,6 +17,11 @@ spec:
       # Fix for ArgoCD: https://github.com/apache/airflow/pull/16331#issuecomment-857004828
       # Liveliness probe for scheduler: https://github.com/apache/airflow/discussions/20010
       values: |
+        images:
+          airflow:
+            repository: {{ if .Values.airflow.image.repository }}
+            tag: {{ if .Values.airflow.image.tag }}
+            pullPolicy: IfNotPresent
         {{ if .Values.airflow.local }}
         executor: LocalExecutor
         postgresql:

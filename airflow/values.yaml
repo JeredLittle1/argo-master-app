@@ -1,6 +1,8 @@
 airflow:
   create: true
   targetRevision: 1.7.0
+  # Flag for local development. Used to determine some settings that are applied to local clusters only
+  # for testing purposes. Otherwise, Airflow likes to consume lots of resources with unneeded processes!
   local: true
   mountConfig:
     local:
@@ -10,6 +12,14 @@ airflow:
       #     containerPath: /mnt/airflow/dags
       # See: https://kind.sigs.k8s.io/docs/user/configuration/#extra-mounts for more info.
       dagMountPath: /mnt/airflow/dags
+    #Github repo URL where DAGs are located. DAGs are mounted as a sidecar & polled periodically for changes.
     github:
       repoUrl: ""
   domainName: test.org
+  # Image to use for Airflow.
+  # This image defaults to the one managed by Airflow.
+  # This should be changed if using custom `requirements.txt` files for your workloads.
+  image:
+    repository: ~
+    tag: ~
+
