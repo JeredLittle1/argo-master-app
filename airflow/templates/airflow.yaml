@@ -19,7 +19,9 @@ spec:
       # Local file system backend for connections: https://airflow.apache.org/docs/apache-airflow/stable/security/secrets/secrets-backend/local-filesystem-secrets-backend.html
       values: |
         secret: |
-          {{ .Values.airflow.secret }}
+          {{- range .Values.airflow.secret }}
+          - {{ . }}
+          {{- end }}   
         images:
           airflow:
             repository: {{ .Values.airflow.image.repository }}
