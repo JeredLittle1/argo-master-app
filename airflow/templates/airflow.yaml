@@ -18,9 +18,11 @@ spec:
       # Liveliness probe for scheduler: https://github.com/apache/airflow/discussions/20010
       # Local file system backend for connections: https://airflow.apache.org/docs/apache-airflow/stable/security/secrets/secrets-backend/local-filesystem-secrets-backend.html
       values: |
-        secret: |
+        secret:
           {{- range .Values.airflow.secret }}
-          - {{ .envName }}
+          - envName: {{ .envName }}
+            secretName: {{ .secretName }}
+            secretKey: {{ .secretKey }}
           {{- end }}   
         images:
           airflow:
