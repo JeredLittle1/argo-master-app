@@ -1,12 +1,13 @@
 ## Description
 Creates the `ingress-nginx` controller.
 
-### ***WARNING*** 
-* If using Rancher Desktop, disable `Traefik` via `Preferences`. Otherwise, the `nginx-controller` will never obtain an `EXTERNAL-IP`.
-
 
 ## Local Setup
-If running locally, edit the `/etc/hosts` file and add the following lines:
+
+### Rancher Desktop & K3S
+
+
+If running locally using Rancher, set `nginx.kindCluster=false`, edit the `/etc/hosts` file and add the following lines:
 
 ```
  EXTERNAL_IP argocd.test.org
@@ -14,6 +15,9 @@ If running locally, edit the `/etc/hosts` file and add the following lines:
  EXTERNAL_IP airflow.test.org
  EXTERNAL_IP jupyterhub.test.org
 ```
+
+***WARNING*** Disable `Traefik` via `Preferences`. Otherwise, the `nginx-controller` will never obtain an `EXTERNAL-IP`.
+
 *Note*: The domain `test.org` may change based on the `values.yaml` config value `ingress.domainName`. In this case, `ingress.domainName=test.org`
 
 The `EXTERNAL_IP` field can be found by running:
@@ -62,3 +66,17 @@ Events:
 ```
 
 The `LoadBalancer Ingress` IP address is the one to add to `/etc/hosts` above.
+
+### Kind
+If using `kind` to create your cluster, set `nginx.kindCluster=true`. Then, modify your `/etc/hosts` file & add:
+
+```
+ 127.0.0.1 argocd.test.org
+ 127.0.0.1 argo-workflows.test.org
+ 127.0.0.1 airflow.test.org
+ 127.0.0.1 jupyterhub.test.org
+ 127.0.0.1 prometheus.test.org
+ 127.0.0.1 grafana.test.org
+```
+
+*Note*: The domain `test.org` may change based on the `values.yaml` config value `ingress.domainName`. In this case, `ingress.domainName=test.org`

@@ -11,7 +11,7 @@ spec:
     chart: ingress-nginx
     helm:
       values: |
-        {{ if .Values.nginx.local }}
+        {{ if .Values.nginx.kindCluster }}
         controller:
           hostPort:
             enabled: true
