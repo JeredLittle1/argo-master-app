@@ -14,7 +14,8 @@ spec:
       version: v3
       valueFiles:
       - values.yaml
-      # https://github.com/apache/airflow/pull/16331#issuecomment-857004828
+      # Fix for ArgoCD: https://github.com/apache/airflow/pull/16331#issuecomment-857004828
+      # Liveliness probe for scheduler: https://github.com/apache/airflow/discussions/20010
       values: |
         {{ if .Values.airflow.local }}
         executor: LocalExecutor
