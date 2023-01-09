@@ -19,8 +19,8 @@ spec:
       values: |
         images:
           airflow:
-            repository: {{ if .Values.airflow.image.repository }}
-            tag: {{ if .Values.airflow.image.tag }}
+            repository: {{ .Values.airflow.image.repository }}
+            tag: {{ .Values.airflow.image.tag }}
             pullPolicy: IfNotPresent
         {{ if .Values.airflow.local }}
         executor: LocalExecutor
