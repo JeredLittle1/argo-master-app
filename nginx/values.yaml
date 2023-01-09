@@ -3,3 +3,4 @@ ingress:
   enableGoogleAuth: false
 nginx:
   targetRevision: 4.4.2
+  local: true

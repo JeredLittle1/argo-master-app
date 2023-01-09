@@ -9,6 +9,17 @@ spec:
     repoURL:  https://kubernetes.github.io/ingress-nginx
     targetRevision: {{ .Values.nginx.targetRevision }}
     chart: ingress-nginx
+    helm:
+      values: |
+        {{ if .Values.airflow.local }}
+        controller:
+          hostPort:
+            enabled: true
+          service:
+            type: NodePort
+          nodeSelector:
+            ingress-ready: "true"
+        {{ end }}
   destination: 
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
