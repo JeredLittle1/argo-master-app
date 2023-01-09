@@ -35,6 +35,11 @@ spec:
             limits:
               memory: 128Mi
         scheduler:
+          livenessProbe:
+            initialDelaySeconds: 60
+            timeoutSeconds: 60
+            failureThreshold: 10
+            periodSeconds: 60
           extraVolumes:
             - name: dags
               hostPath:
