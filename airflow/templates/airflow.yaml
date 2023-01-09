@@ -21,6 +21,14 @@ spec:
           - name: dags
             hostPath:
               path: /mnt/airflow/dags
+        dags:
+          persistence:
+            # Enable persistent volume for storing dags
+            enabled: true
+            # access mode of the persistent volume
+            accessMode: ReadWriteOnce
+            ## the name of an existing PVC to use
+            existingClaim: dags
         executor: LocalExecutor
         postgresql:
           enabled: true
@@ -42,16 +50,10 @@ spec:
           resources:
             limits:
               memory: 512Mi
-          extraVolumeMounts:
-            - name: dags
-              mountPath: /opt/airflow/dags
         webserver:
           resources:
             limits:
               memory: 512Mi
-          extraVolumeMounts:
-            - name: dags
-              mountPath: /opt/airflow/dags
         triggerer:
           resources:
             limits:
