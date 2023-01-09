@@ -38,10 +38,16 @@ spec:
           resources:
             limits:
               memory: 512Mi
+          extraVolumeMounts:
+            - name: dags
+              mountPath: /opt/airflow/dags
         webserver:
           resources:
             limits:
               memory: 512Mi
+          extraVolumeMounts:
+            - name: dags
+              mountPath: /opt/airflow/dags
         triggerer:
           resources:
             limits:
