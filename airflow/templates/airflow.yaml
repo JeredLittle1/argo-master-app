@@ -30,6 +30,31 @@ spec:
           enabled: false
         pgbouncer:
           enabled: false
+        workers:
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+        scheduler:
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+        webserver:
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+        triggerer:
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+        dagProcessor:
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
         {{ else }}
         executor: KubernetesExecutor
         {{ end }}
