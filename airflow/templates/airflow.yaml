@@ -20,7 +20,7 @@ spec:
       values: |
         secret: |
           {{- range .Values.airflow.secret }}
-          - {{ . }}
+          - {{ .envName }}
           {{- end }}   
         images:
           airflow:
