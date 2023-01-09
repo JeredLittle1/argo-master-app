@@ -5,8 +5,6 @@ Creates the `ingress-nginx` controller.
 ## Local Setup
 
 ### Rancher Desktop & K3S
-
-
 If running locally using Rancher, set `nginx.kindCluster=false`, edit the `/etc/hosts` file and add the following lines:
 
 ```
@@ -68,7 +66,29 @@ Events:
 The `LoadBalancer Ingress` IP address is the one to add to `/etc/hosts` above.
 
 ### Kind
-If using `kind` to create your cluster, set `nginx.kindCluster=true`. Then, modify your `/etc/hosts` file & add:
+If using `kind` to create your cluster, make sure to use the following cluster config:
+
+```
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+    extraPortMappings:
+      - containerPort: 80
+        hostPort: 80
+        protocol: TCP
+      - containerPort: 443
+        hostPort: 443
+        protocol: TCP
+```
+
+Next, set `nginx.kindCluster=true`. Then, modify your `/etc/hosts` file & add:
 
 ```
  127.0.0.1 argocd.test.org
