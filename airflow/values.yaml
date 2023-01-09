@@ -4,7 +4,7 @@ airflow:
   local: true
   mountConfig:
     local:
-      dagMountPath: /mnt/c/dags # created this folder at C:\dags -- TODO Change
+      dagMountPath: /mnt/airflow/dags # created this folder at C:\dags -- TODO Change
     github:
       repoUrl: ""
   domainName: test.org
