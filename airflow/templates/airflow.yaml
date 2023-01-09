@@ -33,27 +33,22 @@ spec:
         workers:
           resources:
             limits:
-              cpu: 100m
               memory: 128Mi
         scheduler:
           resources:
             limits:
-              cpu: 100m
-              memory: 256Mi
+              memory: 512Mi
         webserver:
           resources:
             limits:
-              cpu: 100m
-              memory: 256Mi
+              memory: 512Mi
         triggerer:
           resources:
             limits:
-              cpu: 100m
               memory: 256Mi
         dagProcessor:
           resources:
             limits:
-              cpu: 100m
               memory: 128Mi
         {{ else }}
         executor: KubernetesExecutor
