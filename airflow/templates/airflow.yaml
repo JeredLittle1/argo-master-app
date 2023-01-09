@@ -17,6 +17,10 @@ spec:
       # https://github.com/apache/airflow/pull/16331#issuecomment-857004828
       values: |
         {{ if .Values.airflow.local }}
+        volumes:
+          - name: dags
+            hostPath:
+              path: /mnt/airflow/dags
         executor: LocalExecutor
         postgresql:
           enabled: true
@@ -39,19 +43,15 @@ spec:
             limits:
               memory: 512Mi
           extraVolumeMounts:
-            - name: dags-host-volume
-              hostPath:
-                path: /mnt/airflow/dags
-                type: Directory
+            - name: dags
+              mountPath: /opt/airflow/dags
         webserver:
           resources:
             limits:
               memory: 512Mi
           extraVolumeMounts:
-            - name: dags-host-volume
-              hostPath:
-                path: /mnt/airflow/dags
-                type: Directory
+            - name: dags
+              mountPath: /opt/airflow/dags
         triggerer:
           resources:
             limits:
