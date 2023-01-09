@@ -22,4 +22,8 @@ airflow:
   image:
     repository: ~
     tag: ~
+  secret: []
+  # - envName: ""
+  #   secretName: ""
+  #   secretKey: ""
 
