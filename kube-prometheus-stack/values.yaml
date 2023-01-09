@@ -1,4 +1,4 @@
-targetRevision: 43.2.1
+targetHelmChartRevision: 43.2.1
 grafana:
   create: true
   domainName: test.org

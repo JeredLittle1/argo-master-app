@@ -1,5 +1,5 @@
 argoWorkflows:
   create: true
-  targetRevision: 0.22.6
+  targetHelmChartRevision: 0.22.6
   enableGoogleAuth: false
   domainName: test.org

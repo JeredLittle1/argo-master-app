@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: {{ .Values.argoEvents.targetRevision }}
+    targetRevision: {{ .Values.argoEvents.targetHelmChartRevision }}
     chart: argo-events
   destination: 
     server: https://kubernetes.default.svc

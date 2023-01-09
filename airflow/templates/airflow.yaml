@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://airflow.apache.org/
-    targetRevision: {{ .Values.airflow.targetRevision }}
+    targetRevision: {{ .Values.airflow.targetHelmChartRevision }}
     chart: airflow
     helm:
       version: v3

@@ -1,6 +1,6 @@
 airflow:
   create: true
-  targetRevision: 1.7.0
+  targetHelmChartRevision: 1.7.0
   # Flag for local development. Used to determine some settings that are applied to local clusters only
   # for testing purposes. Otherwise, Airflow likes to consume lots of resources with unneeded processes!
   local: true

@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://jupyterhub.github.io/helm-chart/
-    targetRevision: {{ .Values.jupyterhub.targetRevision }}
+    targetRevision: {{ .Values.jupyterhub.targetHelmChartRevision }}
     chart: jupyterhub
     helm:
       values: |

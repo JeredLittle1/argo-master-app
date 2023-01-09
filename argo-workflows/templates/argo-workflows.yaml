@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: {{ .Values.argoWorkflows.targetRevision }}
+    targetRevision: {{ .Values.argoWorkflows.targetHelmChartRevision }}
     chart: argo-workflows
     helm:
       values: |
