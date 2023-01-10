@@ -53,14 +53,14 @@ spec:
             timeoutSeconds: 120
             failureThreshold: 10
             periodSeconds: 120
-          extraVolumes:
-            - name: dags
-              hostPath:
-                path: {{ .Values.airflow.mountConfig.local.dagMountPath }}
-                type: Directory
-          extraVolumeMounts:
-            - name: dags
-              mountPath: /opt/airflow/dags
+        dags:
+          gitSync:
+            enabled: true
+            repo: {{ .Values.airflow.mountConfig.github.repoUrl }}
+            branch: {{ .Values.airflow.mountConfig.github.branch }}
+            rev: {{ .Values.airflow.mountConfig.github.rev }}
+            subPath: {{ .Values.airflow.mountConfig.github.dagsPath }}
+            wait: {{ .Values.airflow.mountConfig.github.syncInterval }}
         {{ else }}
         executor: KubernetesExecutor
         dags:
