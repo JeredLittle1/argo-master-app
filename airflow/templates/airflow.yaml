@@ -21,6 +21,7 @@ spec:
         config:
           webserver:
             authenticate: 'False'
+            rbac: 'False'
         secret:
           {{- range .Values.airflow.secret }}
           - envName: {{ .envName }}
