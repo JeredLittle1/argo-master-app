@@ -20,10 +20,6 @@ spec:
       # Liveliness probe for scheduler: https://github.com/apache/airflow/discussions/20010
       # Local file system backend for connections: https://airflow.apache.org/docs/apache-airflow/stable/security/secrets/secrets-backend/local-filesystem-secrets-backend.html
       values: |
-        config:
-          webserver:
-            authenticate: 'False'
-            rbac: 'False'
         airflowLocalSettings: ''
         secret:
           {{- range .Values.airflow.secret }}
@@ -80,6 +76,8 @@ spec:
             wait: {{ .Values.airflow.mountConfig.github.syncInterval }}
         {{ end }}
         webserver:
+          defaultUser:
+            enabled: false
           webserverConfig: |
 {{ .Files.Get "config/webserver_config.py" | indent 12 }}
         migrateDatabaseJob:
