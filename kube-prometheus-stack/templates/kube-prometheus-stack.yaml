@@ -50,30 +50,9 @@ spec:
               k8s-views-pods:
                 url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
                 token: ''
-          {{ if .Values.grafana.adminUser.keySet }}
-          admin:
-            ## Name of the secret. Can be templated.
-            existingSecret: {{ .Values.grafana.adminUser.secretId }}
-            userKey: {{ .Values.grafana.adminUser.usernameKey }}
-            passwordKey: {{ .Values.grafana.adminUser.passwordKey }}
-          {{ end }}
-          {{ if .Values.grafana.auth.google.enabled }}
           grafana.ini:
-            auth.google:
-              enabled: true
-              client_id: {{ .Values.grafana.auth.google.client_id }}
-              client_secret: {{ .Values.grafana.auth.google.client_secret }}
-              scopes: {{ .Values.grafana.auth.google.scopes }}
-              auth_url: {{ .Values.grafana.auth.google.auth_url }}
-              token_url: {{ .Values.grafana.auth.google.token_url }}
-              allow_sign_up: {{ .Values.grafana.auth.google.allow_sign_up }}
-          extraSecretMounts:
-            - name: auth-generic-oauth-secret-mount
-              secretName: {{ .Values.grafana.auth.secretName}}
-              defaultMode: 0440
-              mountPath: /etc/secrets/auth_generic_oauth
-              readOnly: true
-          {{ end }}
+            security:
+              disable_initial_admin_creation: true
   destination: 
     server: https://kubernetes.default.svc
     namespace: kube-prometheus-stack
