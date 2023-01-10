@@ -67,7 +67,7 @@ spec:
         # TODO Move auth above
         config:
           webserver:
-            authenticate: True
+            authenticate: true
             auth_backend: airflow.contrib.auth.backends.google_auth
           google:
             client_id: ${GOOGLE_CLIENT_ID}
