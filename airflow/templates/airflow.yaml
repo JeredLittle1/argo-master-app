@@ -63,6 +63,14 @@ spec:
               mountPath: /opt/airflow/dags
         {{ else }}
         executor: KubernetesExecutor
+        dags:
+          gitSync:
+            enabled: true
+            repo: {{ .Values.airflow.mountConfig.github.repoUrl }}
+            branch: {{ .Values.airflow.mountConfig.github.branch }}
+            rev: {{ .Values.airflow.mountConfig.github.rev }}
+            subPath: {{ .Values.airflow.mountConfig.github.dagsPath }}
+            wait: {{ .Values.airflow.mountConfig.github.syncInterval }}
         webserver:
           webserverConfig: |
 {{ .Files.Get "config/webserver_config.py" | indent 12 }}

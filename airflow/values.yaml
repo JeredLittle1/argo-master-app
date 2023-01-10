@@ -15,6 +15,10 @@ airflow:
     #Github repo URL where DAGs are located. DAGs are mounted as a sidecar & polled periodically for changes.
     github:
       repoUrl: ""
+      branch: "master"
+      rev: "HEAD"
+      dagsPath: "airflow/dags"
+      syncInterval: 20
   domainName: test.org
   # Image to use for Airflow.
   # This image defaults to the one managed by Airflow.
