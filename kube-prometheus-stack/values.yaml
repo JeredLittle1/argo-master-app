@@ -9,7 +9,7 @@ grafana:
     passwordKey: password
   auth:
     google:
-      enabled: true
+      enabled: false
       client_id:  $__file{/etc/secrets/auth_generic_oauth/client-id}
       client_secret: $__file{/etc/secrets/auth_generic_oauth/client-id}
       scopes: https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
