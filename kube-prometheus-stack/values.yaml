@@ -7,3 +7,10 @@ grafana:
     secretId: admin-user
     usernameKey: username
     passwordKey: password
+  auth.google:
+    enabled: true
+    client_id:  $__file{/etc/secrets/auth_generic_oauth/client_id}
+    client_secret: $__file{/etc/secrets/auth_generic_oauth/client_secret}
+    scopes: https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
+    auth_url: https://accounts.google.com/o/oauth2/auth
+    token_url: https://accounts.google.com/o/oauth2/token
