@@ -62,7 +62,7 @@ spec:
             auth.google: {{ .Values.grafana.auth.google }}
           extraSecretMounts:
             - name: auth-generic-oauth-secret-mount
-              secretName: {{ .Values.grafana.auth.google.secretName}}
+              secretName: {{ .Values.grafana.auth.secretName}}
               defaultMode: 0440
               mountPath: /etc/secrets/auth_generic_oauth
               readOnly: true
