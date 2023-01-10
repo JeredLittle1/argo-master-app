@@ -60,6 +60,12 @@ spec:
           {{ if .Values.grafana.auth.google.enabled }}
           grafana.ini:
             auth.google: {{ .Values.grafana.auth.google }}
+          extraSecretMounts:
+            - name: auth-generic-oauth-secret-mount
+              secretName: {{ .Values.grafana.auth.google.secretName}}
+              defaultMode: 0440
+              mountPath: /etc/secrets/auth_generic_oauth
+              readOnly: true
           {{ end }}
   destination: 
     server: https://kubernetes.default.svc
