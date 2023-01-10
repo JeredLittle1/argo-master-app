@@ -65,15 +65,9 @@ spec:
         executor: KubernetesExecutor
         {{ end }}
         # TODO Move auth above
-        config:
-          webserver:
-            authenticate: True
-            rbac: False
-            auth_backend: airflow.contrib.auth.backends.google_auth
-          google:
-            oauth_callback_route: /oauth2callback
-            domain: {{ .Values.airflow.domainName }}
-            prompt: select_account
+        webserver:
+          webserverConfig: |
+          {{ .Files.Get webserver_config.py }}
         migrateDatabaseJob:
           jobAnnotations:
             "argocd.argoproj.io/hook": Sync
