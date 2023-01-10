@@ -20,8 +20,9 @@ metadata:
   namespace: airflow
 type: Opaque
 stringData:
-   AIRFLOW_CONN_MY_COOL_AIRFLOW_CONNECTION: https://login:password@hello:port/world
+   AIRFLOW_CONN_MY_COOL_AIRFLOW_CONNECTION: http://login:password@hello:port/world
 ```
+#### NOTE: If your connection string is invalid, it will not allow you to use it in Airflow. It will return a "not found" error.
 
 Once you have this file created, seal the secret by running:
 
