@@ -66,12 +66,9 @@ spec:
         {{ end }}
         # TODO Move auth above
         webserver:
-          webserverConfig: |
-          {{ $currentScope := .}}
+          webserverConfig: |-
           {{ range $path, $_ :=  .Files.Glob  "**.py" }}
-              {{- with $currentScope}}
-                  {{ .Files.Get $path }}
-              {{- end }}
+                {{ $.Files.Get $path }}
           {{ end }}
         migrateDatabaseJob:
           jobAnnotations:
