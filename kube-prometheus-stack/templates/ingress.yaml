@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: ingress-grafana
   namespace: kube-prometheus-stack
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   rules:
   - host: grafana.{{ .Values.grafana.domainName }}
