@@ -4,7 +4,7 @@
 OAuth is configured via Google by using the `config/webserver_config.py` file. In order for this to work, a few things must be set up first:
 
 1. A secret must be bootstrapped to K8S in the `airflow` namespace
-  - It must be called `google-client-info`
+  - It must be called `google-oauth-client-info`
   - It must have two keys:
     - `client-id` - The client ID from GCP (OAuth 2.0)
     - `client-secret` - The client secret from GCP (OAuth 2.0)
@@ -14,10 +14,10 @@ OAuth is configured via Google by using the `config/webserver_config.py` file. I
 ```
 secret:
   - envName: GOOGLE_CLIENT_ID
-    secretName: google-client-info
+    secretName: google-oauth-client-info
     secretKey: client-id
   - envName: GOOGLE_CLIENT_SECRET
-    secretName: google-client-info
+    secretName: google-oauth-client-info
     secretKey: client-secret
 ```
 
