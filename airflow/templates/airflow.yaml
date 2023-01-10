@@ -63,11 +63,10 @@ spec:
               mountPath: /opt/airflow/dags
         {{ else }}
         executor: KubernetesExecutor
-        {{ end }}
-        # TODO Move auth above
         webserver:
           webserverConfig: |
 {{ .Files.Get "config/webserver_config.py" | indent 12 }}
+        {{ end }}
         migrateDatabaseJob:
           jobAnnotations:
             "argocd.argoproj.io/hook": Sync

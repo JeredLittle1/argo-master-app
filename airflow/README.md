@@ -1,5 +1,15 @@
 ## Description
 
+### OAuth with Google
+OAuth is configured via Google by using the `config/webserver_config.py` file. In order for this to work, a few things must be set up first:
+
+1. A secret must be bootstrapped to K8S in the `airflow` namespace
+  - It must be called `google-client-info`
+  - It must have two keys:
+    - `client-id` - The client ID from GCP (OAuth 2.0)
+    - `client-secret` - The client secret from GCP (OAuth 2.0)
+2. The redirect URL configured in GCP must be: http://<DOMAIN_NAME>/oauth2callback
+
 ### Secrets
 When creating a new connection for Airflow, you should use Kubernetes secrets & mount it to the containers for Airflow. Below are the steps.
 
