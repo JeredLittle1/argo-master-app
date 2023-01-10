@@ -66,8 +66,8 @@ spec:
         {{ end }}
         # TODO Move auth above
         webserver:
-          webserverConfig: |-
-            {{ $.Files.Get webserver_config.py }}
+          webserverConfig: |
+{{ .Files.Get "config/webserver_config.py" | indent 12 }}
         migrateDatabaseJob:
           jobAnnotations:
             "argocd.argoproj.io/hook": Sync
