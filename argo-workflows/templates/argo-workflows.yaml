@@ -12,26 +12,9 @@ spec:
     chart: argo-workflows
     helm:
       values: |
-        {{ if .Values.argoWorkflows.enableGoogleAuth }}
-        server:
-          sso:
-            issuer: https://accounts.google.com
-            redirectUrl: http://argo-workflows.{{ .Values.argoWorkflows.domainName }}/oauth2/callback
-            clientId:
-              name: argo-server-sso
-              key: client-id
-            clientSecret:
-              name: argo-server-sso
-              key: client-secret
-            rbac:
-              enabled: false
-          extraArgs:
-          - --auth-mode=sso
-        {{ else }}
         server:
           extraArgs:
           - --auth-mode=server
-        {{ end }}
   destination: 
     server: https://kubernetes.default.svc
     namespace: argo-workflows
