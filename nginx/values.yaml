@@ -1,6 +1,5 @@
 ingress:
   domainName: "test.org"
-  enableGoogleAuth: false
 nginx:
   targetHelmChartRevision: 4.4.2
   kindCluster: true
