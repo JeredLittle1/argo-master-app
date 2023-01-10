@@ -51,8 +51,14 @@ spec:
                 url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
                 token: ''
           grafana.ini:
-            security:
-              disable_initial_admin_creation: true
+            users:
+              viewers_can_edit: false
+            auth:
+              disable_login_form: false
+              disable_signout_menu: false
+            auth.anonymous:
+              enabled: true
+              org_role: Viewer
   destination: 
     server: https://kubernetes.default.svc
     namespace: kube-prometheus-stack
