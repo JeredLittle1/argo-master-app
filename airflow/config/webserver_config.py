@@ -1,4 +1,5 @@
 import os
+from airflow import configuration as conf
 basedir = os.path.abspath(os.path.dirname(__file__))
-AUTH_USER_REGISTRATION = True
-AUTH_USER_REGISTRATION_ROLE = 'User'
+SQLALCHEMY_DATABASE_URI = conf.get('core', 'SQL_ALCHEMY_CONN')
+AUTH_ROLE_PUBLIC = 'User'
