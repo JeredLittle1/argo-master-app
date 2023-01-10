@@ -57,6 +57,10 @@ spec:
             userKey: {{ .Values.grafana.adminUser.usernameKey }}
             passwordKey: {{ .Values.grafana.adminUser.passwordKey }}
           {{ end }}
+          {{ if .Values.grafana.auth.google.enabled }}
+          grafana.ini:
+            auth.google: {{ .Values.grafana.auth.google }}
+          {{ end }}
   destination: 
     server: https://kubernetes.default.svc
     namespace: kube-prometheus-stack
