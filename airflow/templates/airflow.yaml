@@ -40,7 +40,7 @@ spec:
         redis:
           enabled: false
         statsd:
-          enabled: false
+          enabled: true
         pgbouncer:
           enabled: false
         workers:
