@@ -10,6 +10,17 @@ OAuth is configured via Google by using the `config/webserver_config.py` file. I
     - `client-secret` - The client secret from GCP (OAuth 2.0)
 2. The redirect URL configured in GCP must be: http://<DOMAIN_NAME>/oauth2callback
 
+3. The secrets above must be bootstrapped to the Airflow chart by setting these configs:
+```
+secret:
+  - envName: GOOGLE_CLIENT_ID
+    secretName: google-client-info
+    secretKey: client-id
+  - envName: GOOGLE_CLIENT_SECRET
+    secretName: google-client-info
+    secretKey: client-secret
+```
+
 ### Secrets
 When creating a new connection for Airflow, you should use Kubernetes secrets & mount it to the containers for Airflow. Below are the steps.
 
