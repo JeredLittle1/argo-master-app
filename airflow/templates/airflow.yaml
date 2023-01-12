@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: airflow
-  namespace: argocd
+  namespace: compute-plane
 spec:
   project: default
   source:
@@ -85,7 +85,7 @@ spec:
             "argocd.argoproj.io/hook-delete-policy": BeforeHookCreation,HookSucceeded
   destination: 
     server: https://kubernetes.default.svc
-    namespace: airflow
+    namespace: compute-plane
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

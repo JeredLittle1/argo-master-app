@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argo-workflows
-  namespace: argocd
+  namespace: compute-plane
 spec:
   project: default
   source:
@@ -17,7 +17,7 @@ spec:
           - --auth-mode=server
   destination: 
     server: https://kubernetes.default.svc
-    namespace: argo-workflows
+    namespace: compute-plane
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
