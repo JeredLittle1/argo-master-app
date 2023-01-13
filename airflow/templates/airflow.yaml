@@ -73,9 +73,6 @@ spec:
             subPath: {{ .Values.airflow.mountConfig.github.dagsPath }}
             wait: {{ .Values.airflow.mountConfig.github.syncInterval }}
         {{ end }}
-        config: 
-          webserver: 
-            base_url: "https://{{ .Values.airflow.domainName }}/airflow"
         webserver:
           service:
             annotations:
