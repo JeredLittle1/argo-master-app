@@ -74,8 +74,8 @@ spec:
             wait: {{ .Values.airflow.mountConfig.github.syncInterval }}
         {{ end }}
         config: 
-          AIRFLOW__WEBSERVER__BASE_URL: "https://{{ .Values.airflow.domainName }}/airflow/"
-          AIRFLOW__CELERY__FLOWER_URL_PREFIX: "/airflow/flower"
+          webserver: 
+            base_url: "https://{{ .Values.airflow.domainName }}/airflow/"
         webserver:
           service:
             annotations:
