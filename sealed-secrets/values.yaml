@@ -1,3 +1,4 @@
 sealedSecrets:
   targetHelmChartRevision: 2.7.2
   create: true
+namespace: compute-plane

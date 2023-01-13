@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kube-prometheus-stack
-  namespace: compute-plane
+  namespace: {{ .Values.namespace }}
 spec:
   project: default
   source:
@@ -54,17 +54,19 @@ spec:
             users:
               viewers_can_edit: false
             auth:
-              disable_login_form: false
+              disable_login_form: true
               disable_signout_menu: false
             auth.anonymous:
               enabled: true
               org_role: Viewer
+          {{ if .Values.gcp.iap.enabled }}
           service:
             annotations:
               "beta.cloud.google.com/backend-config" : "{\"default\": \"{{ .Values.gcp.iap.backendConfigName }}\"}"
+          {{ end }}
   destination: 
     server: https://kubernetes.default.svc
-    namespace: compute-plane
+    namespace: {{ .Values.namespace }}
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
