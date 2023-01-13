@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argo-workflows
-  namespace: compute-plane
+  namespace: {{ .Values.namespace }}
 spec:
   project: default
   source:
@@ -13,15 +13,17 @@ spec:
     helm:
       values: |
         controller:
-          workflowNamespaces: compute-plane
+          workflowNamespaces: {{ .Values.namespace }}
         server:
           extraArgs:
           - --auth-mode=server
+          {{ if .Values.gcp.iap.enabled }}
           serviceAnnotations:
             "beta.cloud.google.com/backend-config" : "{\"default\": \"{{ .Values.gcp.iap.backendConfigName }}\"}"
+          {{ end }}
   destination: 
     server: https://kubernetes.default.svc
-    namespace: compute-plane
+    namespace: {{ .Values.namespace }}
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
