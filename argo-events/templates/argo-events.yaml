@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argo-events
-  namespace: compute-plane
+  namespace: {{ .Values.namespace }}
 spec:
   project: default
   source:
@@ -12,7 +12,7 @@ spec:
     chart: argo-events
   destination: 
     server: https://kubernetes.default.svc
-    namespace: compute-plane
+    namespace: {{ .Values.namespace }}
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
