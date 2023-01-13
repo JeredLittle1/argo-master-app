@@ -76,7 +76,7 @@ spec:
         webserver:
           service:
             annotations:
-              "beta.cloud.google.com/backend-config" : {"default": "{{ .Values.gcp.iap.backendConfigName }}"}
+              "beta.cloud.google.com/backend-config" : "{\"default\": \"{{ .Values.gcp.iap.backendConfigName }}\"}"
           defaultUser:
             enabled: false
           webserverConfig: |
