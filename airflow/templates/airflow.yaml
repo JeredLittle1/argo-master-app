@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: airflow
-  namespace: compute-plane
+  namespace: {{ .Values.namespace }}
 spec:
   project: default
   source:
@@ -30,7 +30,7 @@ spec:
             repository: {{ .Values.airflow.image.repository }}
             tag: {{ .Values.airflow.image.tag }}
             pullPolicy: IfNotPresent
-        {{ if .Values.airflow.local }}
+        {{ if .Values.airflow.local.enabled }}
         executor: LocalExecutor
         postgresql:
           enabled: true
@@ -74,9 +74,11 @@ spec:
             wait: {{ .Values.airflow.mountConfig.github.syncInterval }}
         {{ end }}
         webserver:
+          {{ if .Values.gcp.iap.enabled }}
           service:
             annotations:
               "beta.cloud.google.com/backend-config" : "{\"default\": \"{{ .Values.gcp.iap.backendConfigName }}\"}"
+          {{ end }}
           defaultUser:
             enabled: false
           webserverConfig: |
@@ -88,7 +90,7 @@ spec:
             "argocd.argoproj.io/hook-delete-policy": BeforeHookCreation,HookSucceeded
   destination: 
     server: https://kubernetes.default.svc
-    namespace: compute-plane
+    namespace: {{ .Values.namespace }}
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

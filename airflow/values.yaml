@@ -3,7 +3,8 @@ airflow:
   targetHelmChartRevision: 1.7.0
   # Flag for local development. Used to determine some settings that are applied to local clusters only
   # for testing purposes. Otherwise, Airflow likes to consume lots of resources with unneeded processes!
-  local: true
+  local:
+    enabled: true
   mountConfig:
     local:
       # This is the mount path on the host node. For `kind`, it is set in the Cluster config. EX:
@@ -19,7 +20,6 @@ airflow:
       rev: "HEAD"
       dagsPath: "airflow/dags"
       syncInterval: 20
-  domainName: compute-plane.jlittle.xyz
   # Image to use for Airflow.
   # This image defaults to the one managed by Airflow.
   # This should be changed if using custom `requirements.txt` files for your workloads.
@@ -30,9 +30,9 @@ airflow:
   # - envName: ""
   #   secretName: ""
   #   secretKey: ""
-
 gcp:
   enabled: false
   iap:
     enabled: false
     backendConfigName: iap-config
+namespace: compute-plane
