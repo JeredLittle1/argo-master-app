@@ -1,10 +1,10 @@
 jupyterhub:
   create: true
   targetHelmChartRevision: 2.0.0
-  enableGoogleAuth: false
   domainName: test.org
 gcp:
   enabled: false
   iap:
     enabled: false
     backendConfigName: iap-config
+namespace: compute-plane
