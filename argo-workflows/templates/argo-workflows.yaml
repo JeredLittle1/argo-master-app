@@ -12,8 +12,6 @@ spec:
     chart: argo-workflows
     helm:
       values: |
-        controller:
-          workflowNamespaces: {{ .Values.namespace }}
         server:
           extraArgs:
           - --auth-mode=server
