@@ -1,4 +1,4 @@
 targetHelmChartRevision: 43.2.1
 grafana:
   create: true
-  domainName: test.org
+  domainName: compute-plane.jlittle.xyz

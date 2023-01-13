@@ -59,6 +59,9 @@ spec:
             auth.anonymous:
               enabled: true
               org_role: Viewer
+            server:
+              root_url: https://{{ .Values.grafana.domainName }}/grafana
+              serve_from_sub_path: true
   destination: 
     server: https://kubernetes.default.svc
     namespace: compute-plane
