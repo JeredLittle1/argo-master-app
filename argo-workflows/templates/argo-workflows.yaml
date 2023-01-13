@@ -12,6 +12,8 @@ spec:
     chart: argo-workflows
     helm:
       values: |
+        controller:
+          workflowNamespaces: compute-plane
         server:
           extraArgs:
           - --auth-mode=server
