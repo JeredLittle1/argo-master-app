@@ -75,7 +75,7 @@ spec:
         {{ end }}
         config: 
           webserver: 
-            base_url: "https://{{ .Values.airflow.domainName }}/airflow/"
+            base_url: "https://{{ .Values.airflow.domainName }}/airflow"
         webserver:
           service:
             annotations:
