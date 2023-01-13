@@ -73,6 +73,9 @@ spec:
             subPath: {{ .Values.airflow.mountConfig.github.dagsPath }}
             wait: {{ .Values.airflow.mountConfig.github.syncInterval }}
         {{ end }}
+        config: 
+          AIRFLOW__WEBSERVER__BASE_URL: "https://{{ .Values.airflow.domainName }}/airflow/"
+          AIRFLOW__CELERY__FLOWER_URL_PREFIX: "/airflow/flower"
         webserver:
           service:
             annotations:

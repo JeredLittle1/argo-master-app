@@ -19,7 +19,7 @@ airflow:
       rev: "HEAD"
       dagsPath: "airflow/dags"
       syncInterval: 20
-  domainName: test.org
+  domainName: compute-plane.jlittle.xyz
   # Image to use for Airflow.
   # This image defaults to the one managed by Airflow.
   # This should be changed if using custom `requirements.txt` files for your workloads.
