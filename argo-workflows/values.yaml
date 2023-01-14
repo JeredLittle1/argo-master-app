@@ -1,7 +1,6 @@
 argoWorkflows:
   create: true
   targetHelmChartRevision: 0.22.6
-  domainName: test.org
 gcp:
   enabled: false
   iap:

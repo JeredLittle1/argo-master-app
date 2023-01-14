@@ -1,7 +1,6 @@
 jupyterhub:
   create: true
   targetHelmChartRevision: 2.0.0
-  domainName: test.org
 gcp:
   enabled: false
   iap:

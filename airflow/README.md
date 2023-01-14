@@ -1,6 +1,6 @@
 ## Description
 
-### OAuth with Google
+### OAuth with Google (NOT IAP)
 OAuth is configured via Google by using the `config/webserver_config.py` file. In order for this to work, a few things must be set up first:
 
 1. A secret must be bootstrapped to K8S in the `airflow` namespace

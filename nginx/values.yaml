@@ -1,5 +1,0 @@
-ingress:
-  domainName: "test.org"
-nginx:
-  targetHelmChartRevision: 4.4.2
-  kindCluster: true

@@ -1,7 +1,6 @@
 targetHelmChartRevision: 43.2.1
 grafana:
   create: true
-  domainName: compute-plane.jlittle.xyz
 gcp:
   enabled: false
   iap:
