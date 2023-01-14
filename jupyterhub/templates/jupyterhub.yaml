@@ -14,9 +14,15 @@ spec:
       values: |
         proxy:
           service:
+            {{ if .Values.jupyterhub.local.enabled }}
+            type: NodePort
+            {{ else }}
             type: ClusterIP
+            {{ end }}
+            {{ if .Values.gcp.iap.enabled }}
             annotations:
               "beta.cloud.google.com/backend-config" : "{\"default\": \"{{ .Values.gcp.iap.backendConfigName }}\"}"
+            {{ end }}
   destination: 
     server: https://kubernetes.default.svc
     namespace: {{ .Values.namespace }}

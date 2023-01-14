@@ -1,6 +1,8 @@
 argoWorkflows:
   create: true
   targetHelmChartRevision: 0.22.6
+  local:
+    enabled: true
 gcp:
   enabled: false
   iap:

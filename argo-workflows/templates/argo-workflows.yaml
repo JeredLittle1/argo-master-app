@@ -19,6 +19,9 @@ spec:
           serviceAnnotations:
             "beta.cloud.google.com/backend-config" : "{\"default\": \"{{ .Values.gcp.iap.backendConfigName }}\"}"
           {{ end }}
+          {{ if .Values.argoWorkflows.local.enabled }}
+          serviceType: NodePort
+          {{ end }}
   destination: 
     server: https://kubernetes.default.svc
     namespace: {{ .Values.namespace }}

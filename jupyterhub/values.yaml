@@ -1,6 +1,8 @@
 jupyterhub:
   create: true
   targetHelmChartRevision: 2.0.0
+  local:
+    enabled: true
 gcp:
   enabled: false
   iap:

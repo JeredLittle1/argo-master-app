@@ -1,6 +1,8 @@
 targetHelmChartRevision: 43.2.1
 grafana:
   create: true
+  local:
+    enabled : true
 gcp:
   enabled: false
   iap:

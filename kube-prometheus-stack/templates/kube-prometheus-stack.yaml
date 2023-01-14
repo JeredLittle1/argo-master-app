@@ -64,6 +64,10 @@ spec:
             annotations:
               "beta.cloud.google.com/backend-config" : "{\"default\": \"{{ .Values.gcp.iap.backendConfigName }}\"}"
           {{ end }}
+          {{ if .Values.grafana.local.enabled }}
+          service:
+            type: NodePort
+          {{ end }}
   destination: 
     server: https://kubernetes.default.svc
     namespace: {{ .Values.namespace }}
