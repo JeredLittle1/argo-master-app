@@ -9,7 +9,7 @@ roleRef:
   name: spark-operator
 subjects:
   {{- range .Values.extraServiceAccounts }}
-  - kind: {{ .kind }}
+  - kind: ServiceAccount
     name: {{ .name }}
     namespace: {{ .namespace }}
   {{- end }}

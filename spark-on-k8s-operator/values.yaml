@@ -4,4 +4,4 @@ spark:
 namespace: compute-plane
 
 # Add extra service accounts which are allowed to create spark jobs. EX: Airflow service accounts.
-extraServiceAccounts: {}
+extraServiceAccounts: []
