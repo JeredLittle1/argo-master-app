@@ -2,3 +2,6 @@ spark:
   create: true
   targetHelmChartRevision: 1.1.26
 namespace: compute-plane
+
+# Add extra service accounts which are allowed to create spark jobs. EX: Airflow service accounts.
+extraServiceAccounts: {}
