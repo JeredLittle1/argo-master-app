@@ -7,6 +7,7 @@ metadata:
 spec:
   project: default
   source:
+    # Note: There exists an ongoing issue where the pods for this operator do not restart if Service Accounts are re-created: https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/issues/1554
     repoURL: https://googlecloudplatform.github.io/spark-on-k8s-operator
     targetRevision: {{ .Values.spark.targetHelmChartRevision }}
     chart: spark-operator
