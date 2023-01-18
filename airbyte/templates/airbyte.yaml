@@ -12,6 +12,10 @@ spec:
     chart: airbyte
     helm:
       version: v3
+      values: |
+        webapp:
+          service:
+            type: {{ .Values.airbyte.webapp.service.type }}
   destination: 
     server: https://kubernetes.default.svc
     namespace: {{ .Values.namespace }}

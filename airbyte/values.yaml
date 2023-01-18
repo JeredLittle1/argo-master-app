@@ -1,4 +1,7 @@
 airbyte:
   create: true
   targetHelmChartRevision: 0.43.18
+  webapp:
+    service:
+      type: ClusterIP
 namespace: compute-plane
