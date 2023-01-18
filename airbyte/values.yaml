@@ -1,0 +1,4 @@
+airbyte:
+  create: true
+  targetHelmChartRevision: 0.43.18
+namespace: compute-plane
