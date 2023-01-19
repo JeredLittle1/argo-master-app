@@ -4,4 +4,9 @@ airbyte:
   webapp:
     service:
       type: ClusterIP
+gcp:
+  enabled: false
+  iap:
+    enabled: false
+    backendConfigName: iap-config
 namespace: compute-plane

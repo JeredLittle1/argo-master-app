@@ -16,6 +16,10 @@ spec:
         webapp:
           service:
             type: {{ .Values.airbyte.webapp.service.type }}
+            {{ if .Values.gcp.iap.enabled }}
+            annotations:
+              "beta.cloud.google.com/backend-config" : "{\"default\": \"{{ .Values.gcp.iap.backendConfigName }}\"}"
+            {{ end }}
   destination: 
     server: https://kubernetes.default.svc
     namespace: {{ .Values.namespace }}
