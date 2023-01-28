@@ -1,0 +1,11 @@
+superset:
+  create: true
+  targetHelmChartRevision: 0.8.4
+local:
+  enabled: true
+gcp:
+  enabled: false
+  iap:
+    enabled: false
+    backendConfigName: iap-config
+namespace: compute-plane
